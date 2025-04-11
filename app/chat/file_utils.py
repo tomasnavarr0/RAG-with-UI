@@ -1,7 +1,6 @@
 from typing import List
 from pathlib import Path
 from app.config import Settings
-import chainlit as cl
 from chainlit.element import Element
 
 

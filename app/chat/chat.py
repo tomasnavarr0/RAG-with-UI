@@ -1,12 +1,14 @@
 import chainlit as cl
 from openai import AsyncOpenAI
-from dataclasses import dataclass
+from openai.types.beta import Assistant
 from app.config import Settings
 from .file_utils import process_files
 from .event_handler import EventHandler
 
+
 class Agent:
     client: AsyncOpenAI = AsyncOpenAI(api_key=Settings.OPENAI_API_KEY)
+    assistant: Assistant = Settings.assistant_
 
     @staticmethod
     @cl.set_starters
@@ -17,23 +19,23 @@ class Agent:
                 message="What is Batuta?",
                 icon="/public/2.png",
             ),
-            cl.Starter(
-                label="Metabase Q", message="What is Metabase Q?", icon="/public/3.png"
-            ),
+            cl.Starter(label="Metabase Q", message="What is Metabase Q?", icon="/public/3.png"),
             cl.Starter(
                 label="Change password",
                 message="How do I change my password?",
                 icon="/public/3.png",
             ),
-            cl.Starter(label="Batuta requirements", message="What are the requirements for installing Batuta?", icon="/public/3.png"),
+            cl.Starter(
+                label="Batuta requirements",
+                message="What are the requirements for installing Batuta?",
+                icon="/public/3.png",
+            ),
         ]
-
 
     @cl.on_chat_start
     async def start_chat(self) -> None:
         thread = await self.client.beta.threads.create()
         cl.user_session.set("thread_id", thread.id)
-
 
     @cl.on_chat_resume
     async def resume_chat(self) -> None:
@@ -44,7 +46,6 @@ class Agent:
                 await cl.Message(author=message["role"], content=message["content"]).send()
         else:
             await self.start_chat()
-
 
     @cl.on_message
     async def main(self, message: cl.Message) -> None:
@@ -61,7 +62,7 @@ class Agent:
 
         async with self.client.beta.threads.runs.stream(
             thread_id=thread_id,
-            assistant_id=Settings.assistant.id,
-            event_handler=EventHandler(assistant_name=Settings.assistant.name),
+            assistant_id=self.assistant.id,
+            event_handler=EventHandler(assistant_name=self.assistant.name),
         ) as stream:
             await stream.until_done()

@@ -3,6 +3,7 @@ from app.chat.chat import Agent
 
 agent = Agent()
 
+
 # Combinación de las dos funciones de inicio de chat
 @cl.on_chat_start
 async def on_start():
@@ -20,4 +21,3 @@ async def on_resume():
 @cl.on_message
 async def on_message(message: cl.Message):
     await agent.main(message)
-

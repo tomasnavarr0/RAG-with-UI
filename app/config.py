@@ -1,4 +1,4 @@
-from openai import AsyncOpenAI, OpenAI
+from openai import OpenAI
 from openai.types.beta import Assistant
 from literalai import LiteralClient
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -23,9 +23,9 @@ class Settings(BaseSettings):
     def openai_client(self) -> OpenAI:
         self.literal_client.instrument_openai()
         return OpenAI(api_key=self.OPENAI_API_KEY)
-    
+
     @property
-    def assistant(self) -> Assistant:
+    def assistant_(self) -> Assistant:
         return self.openai_client.beta.assistants.retrieve(self.ASSISTANT_ID)
 
 

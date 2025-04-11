@@ -1,9 +1,7 @@
 import os
 import csv
 import time
-from openai import OpenAI
 from PyPDF2 import PdfReader, PdfWriter
-from dotenv import load_dotenv
 
 from app.config import Settings
 
@@ -12,7 +10,7 @@ from app.config import Settings
 vector_store_id = "vs_I5Vy1vHf6Y9xItD7qKjcYIJm"
 
 # Ruta a la carpeta que contiene los PDFs
-pdf_folder = "C:/Users/mateo/OneDrive/Escritorio/Vanguard/Vang-LegalChat/Base vectorial"
+pdf_folder = "app/data"
 
 # Nombre del archivo CSV para guardar la información
 csv_file = "vector_store_files.csv"

@@ -1,7 +1,6 @@
 import chainlit as cl
 from app.chat.chat import Agent
 from app.vector_db.db import VectorDB
-from app.config import Settings
 
 agent = Agent()
 vector_db = VectorDB()
@@ -9,7 +8,7 @@ vector_db = VectorDB()
 
 @cl.on_chat_start
 async def on_start():
-    VectorDB.upload_pdf_to_openai(Settings.PDF_PATH)
+    vector_db.add_all()
     await agent.set_starters()
     await agent.start_chat()
 

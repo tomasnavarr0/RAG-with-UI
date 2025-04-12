@@ -54,10 +54,10 @@ edit_message = true
 
 [UI]
 # Name of the assistant.
-name = "Legia"
+name = "Batty"
 
 # Description of the assistant. This is used for HTML tags.
-# description = "Your AI Legal Assistant"
+# description = "Your AI Assistant"
 
 # Large size content are by default collapsed for a cleaner ui
 default_collapse_content = true

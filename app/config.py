@@ -18,7 +18,6 @@ class Settings(BaseSettings):
 
     PDF_FOLDER: str = "app/data"
     PDF_PATH: str = "app/data/Batuta Documentation - AI Challenge.pdf"
-    CSV_FILE: str = "vector_store_files.csv"
 
     @property
     def literal_client(self) -> LiteralClient:

@@ -1,11 +1,23 @@
 FROM python:3.12-alpine
 
+RUN apk add --no-cache \
+    gcc \
+    musl-dev \
+    libffi-dev \
+    openssl-dev \
+    build-base \
+    git \
+    curl
+
 WORKDIR /app
+
+COPY Pipfile Pipfile.lock ./
+
+RUN pip install --no-cache-dir pipenv && \
+    pipenv install --deploy --ignore-pipfile
 
 COPY . .
 
-RUN pip install --no-cache-dir -r requirements.txt
-
 EXPOSE 8000
 
-CMD ["sh", "-c", "chainlit run app.py -w --root-path"]
+CMD ["pipenv", "run", "chainlit", "run", "main.py", "-w"]

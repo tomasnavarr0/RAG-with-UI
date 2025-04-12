@@ -14,6 +14,11 @@ class Settings(BaseSettings):
     OPENAI_API_KEY: str
     LITERAL_API_KEY: str
     ASSISTANT_ID: str
+    VECTOR_DB_ID: str
+
+    PDF_FOLDER: str = "app/data"
+    PDF_PATH: str = "app/data/Batuta Documentation - AI Challenge.pdf"
+    CSV_FILE: str = "vector_store_files.csv"
 
     @property
     def literal_client(self) -> LiteralClient:

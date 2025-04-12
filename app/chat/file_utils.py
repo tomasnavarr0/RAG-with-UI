@@ -1,23 +1,19 @@
-from typing import List
 from pathlib import Path
 from app.config import Settings
 from chainlit.element import Element
 
 
-async def upload_files(files: List[Element]):
-    file_ids = []
-    for file in files:
-        uploaded_file = await Settings.sync_openai_client.files.create(file=Path(file.path), purpose="assistants")
-        file_ids.append(uploaded_file.id)
-    return file_ids
+async def get_file(path: str) -> str:
+    file_object = await Settings.openai_client.files.create(file=Path(path), purpose="assistants")
+    return file_object.id
 
 
-async def process_files(files: List[Element]):
-    # Upload files if any and get file_ids
-    file_ids = []
-    if len(files) > 0:
-        file_ids = await upload_files(files)
+async def upload_files(files: list[Element]) -> list[str]:
+    return [await get_file(file.path) for file in files]
 
+
+async def process_files(files: list[Element]):
+    file_ids = await upload_files(files)
     return [
         {
             "file_id": file_id,

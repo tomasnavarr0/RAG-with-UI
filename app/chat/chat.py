@@ -40,12 +40,12 @@ class Agent:
     @cl.on_chat_resume
     async def resume_chat(self) -> None:
         thread_id = cl.user_session.get("thread_id")
-        if thread_id:
+        if not thread_id:
+            await self.start_chat()
+        else:
             thread = await self.client.beta.threads.retrieve(thread_id=thread_id)
             for message in thread.messages:
                 await cl.Message(author=message["role"], content=message["content"]).send()
-        else:
-            await self.start_chat()
 
     @cl.on_message
     async def main(self, message: cl.Message) -> None:

@@ -7,7 +7,7 @@ from app.config import Settings
 
 
 # ID de la base de datos vectorial ya creada
-vector_store_id = "vs_I5Vy1vHf6Y9xItD7qKjcYIJm"
+vector_store_id = "vs_67f9c22c5f188191843d60cd1a9bbd24"
 
 # Ruta a la carpeta que contiene los PDFs
 pdf_folder = "app/data"

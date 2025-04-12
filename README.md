@@ -33,15 +33,11 @@ cd <nombre-del-repositorio>
 
 Instala las dependencias:
 ```bash
-pipenv install
+docker build -t chainlit-app .
 ```
 
 ### Ejecutar el asistente
 ```bash
-pipenv shell
-chainlit run main.py -w
+docker run -p 8000:8000 chainlit-app
 ```
 
-### APIKEYS
-- Generar una api key en openai
-- Generar una api key en LiteralAI

@@ -1,0 +1,89 @@
+/* General body styling */
+body {
+  background-color: #121212; /* Dark background for better contrast */
+  color: #ffffff; /* White text color */
+  font-family: 'Arial', sans-serif; /* Clean font style */
+}
+
+/* Style the buttons */
+button {
+  background-color: #4CAF50; /* Green color for buttons */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px; /* Rounded corners for buttons */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+button:hover {
+  background-color: #45a049; /* Darker shade of green on hover */
+}
+
+/* Style for active chat area */
+.chat-area {
+  background-color: #333333; /* Slightly lighter background for the chat area */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Input field styling */
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Enhance visibility of active input or button */
+input[type="text"]:focus, button:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: #bfbfbf;
+  opacity: 1; /* Fully opaque */
+}
+
+/* Hide specific elements */
+.css-8kxmdr,
+.css-plyx71,
+.css-12hxhao,
+.css-1705j0v {
+  visibility: hidden !important;
+}
+
+/* Hide watermark */
+.watermark {
+  display: none;
+}
+
+/* Hide source references */
+span.source-reference {
+  display: none;
+}
+
+span::after {
+  content: ""; /* Hide content appearing after the span */
+  display: none;
+}
+
+/* Hide specific content based on an attribute */
+span[data-source="4:0†source"] {
+  display: none;
+}
+
+footer {
+  display: none;
+}

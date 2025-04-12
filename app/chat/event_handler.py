@@ -21,37 +21,3 @@ class EventHandler(AsyncAssistantEventHandler):
 
     async def on_text_done(self, *_: Any) -> None:
         await self.current_message.update()
-
-    # async def on_tool_call_created(self, tool_call):
-    #     self.current_tool_call = tool_call.id
-    #     self.current_step = cl.Step(name=tool_call.type, type="tool")
-    #     self.current_step.language = "python"
-    #     self.current_step.created_at = utc_now()
-    #     await self.current_step.send()
-
-    # async def on_tool_call_delta(self, delta, snapshot):
-    #     if snapshot.id != self.current_tool_call:
-    #         self.current_tool_call = snapshot.id
-    #         self.current_step = cl.Step(name=delta.type, type="tool")
-    #         self.current_step.language = "python"
-    #         self.current_step.start = utc_now()
-    #         await self.current_step.send()
-
-    #     if delta.type == "code_interpreter":
-    #         if delta.code_interpreter.outputs:
-    #             for output in delta.code_interpreter.outputs:
-    #                 if output.type == "logs":
-    #                     error_step = cl.Step(name=delta.type, type="tool")
-    #                     error_step.is_error = True
-    #                     error_step.output = output.logs
-    #                     error_step.language = "markdown"
-    #                     error_step.start = self.current_step.start
-    #                     error_step.end = utc_now()
-    #                     await error_step.send()
-    #         else:
-    #             if delta.code_interpreter.input:
-    #                 await self.current_step.stream_token(delta.code_interpreter.input)
-
-    # async def on_tool_call_done(self):
-    #     self.current_step.end = utc_now()
-    #     await self.current_step.update()

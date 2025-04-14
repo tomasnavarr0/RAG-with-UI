@@ -12,7 +12,7 @@ class EventHandler(AsyncAssistantEventHandler):
     async def on_text_created(self, *_: Any) -> None:
         self.current_message = await cl.Message(author=self.assistant_name, content="").send()
 
-    async def on_text_delta(self, delta, *_: Any) -> None:
+    async def on_text_delta(self, delta: Any, *_: Any) -> None:
         await self.current_message.stream_token(delta.value)
 
     async def on_text_done(self, *_: Any) -> None:

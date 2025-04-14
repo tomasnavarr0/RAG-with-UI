@@ -23,7 +23,7 @@ Antes de ejecutar el proyecto, asegúrate de tener configuradas las siguientes v
 - **`OPENAI_API_KEY`**: Clave API de OpenAI.
 - **`ASSISTANT_ID`**: ID del asistente de OpenAI.
 - **`LITERAL_API_KEY`**: Clave API de LiteralAI.
-
+- **`VECTOR_DB_ID`**: Clave API de BD Vectorial.
 Puedes agregar estas variables en tu entorno local o en un archivo `.env`.
 
 ### Instalación

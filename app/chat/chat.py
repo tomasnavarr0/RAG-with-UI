@@ -15,19 +15,22 @@ class Agent:
     async def set_starters() -> list[cl.Starter]:
         return [
             cl.Starter(
-                label="What is Batuta?",
-                message="What is Batuta?",
+                label="Que es una Escritura?",
+                message="Que es una Escritura?",
                 icon="/public/2.png",
             ),
-            cl.Starter(label="Metabase Q", message="What is Metabase Q?", icon="/public/3.png"),
             cl.Starter(
-                label="Change password",
-                message="How do I change my password?",
+                label="Reales",
+                message="Que son los derechos Reales",
+                icon="/public/3.png"),
+            cl.Starter(
+                label="Colegio de Escribanos",
+                message="Que es el colegio de escribanos",
                 icon="/public/3.png",
             ),
             cl.Starter(
-                label="Batuta requirements",
-                message="What are the requirements for installing Batuta?",
+                label="Matricula",
+                message="Como obtener la Matricula?",
                 icon="/public/3.png",
             ),
         ]
@@ -66,3 +69,4 @@ class Agent:
             event_handler=EventHandler(assistant_name=self.assistant.name),
         ) as stream:
             await stream.until_done()
+    

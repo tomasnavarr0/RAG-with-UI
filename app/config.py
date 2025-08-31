@@ -17,7 +17,6 @@ class Settings(BaseSettings):
     VECTOR_DB_ID: str
 
     PDF_FOLDER: str = "app/data"
-    PDF_PATH: str = "app/data/Batuta Documentation - AI Challenge.pdf"
 
     @property
     def literal_client(self) -> LiteralClient:

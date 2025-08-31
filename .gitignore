@@ -2,7 +2,11 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+app/data/Batuta Documentation - AI Challenge.pdf
+app/data/host-invent.pdf
+app/data/hosts-inventory.json
+app/data/vulnerabilities.json
+app/data/vulnerabilities.pdf
 # C extensions
 *.so
 # Distribution / packaging

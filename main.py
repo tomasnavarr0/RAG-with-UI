@@ -8,7 +8,7 @@ vector_db = VectorDB()
 
 @cl.on_chat_start
 async def on_start():
-    vector_db.add_all()
+
     await agent.set_starters()
     await agent.start_chat()
 

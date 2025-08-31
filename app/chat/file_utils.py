@@ -3,11 +3,11 @@ from app.config import Settings
 from chainlit.element import Element
 from openai import OpenAI
 
-OPENAI_CLIENT: OpenAI = Settings.openai_client
 
 
-async def get_file(path: str) -> str:
-    file_object = await OPENAI_CLIENT.files.create(file=Path(path), purpose="assistants")
+
+async def get_file(path: str, openai_client: OpenAI = Settings.OPENAI_API_KEY) -> str:
+    file_object = await openai_client.files.create(file=Path(path), purpose="assistants")
     return file_object.id
 
 

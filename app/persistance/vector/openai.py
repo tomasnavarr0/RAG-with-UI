@@ -6,7 +6,7 @@ from app.config import Settings
 
 
 @dataclass
-class VectorDB:
+class OpenAIVectorDB:
     openai_client: OpenAI = field(default=Settings.openai_client)
     pdf_folder: str = field(default=Settings.PDF_FOLDER)
 

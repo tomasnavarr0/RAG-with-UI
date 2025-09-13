@@ -1,9 +1,9 @@
 import chainlit as cl
 from app.chat.chat import Agent
-from app.vector_db.db import VectorDB
+from app.persistance.vector.openai import OpenAIVectorDB
 
 agent = Agent()
-vector_db = VectorDB()
+vector_db = OpenAIVectorDB()
 
 
 @cl.on_chat_start

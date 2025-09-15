@@ -30,7 +30,4 @@ repos:
         - "openai==1.47.1"
         - "pydantic==2.9.2"
         - "pydantic-settings==2.8.1"
-        - "fake-useragent==2.2.0"
-        - "requests==2.32.4"
-        - "pandas==2.3.0"
       args: ["--config-file", "/workspace/pyproject.toml"]

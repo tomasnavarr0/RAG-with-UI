@@ -3,10 +3,10 @@ from openai import AsyncOpenAI
 from openai.types.beta import Assistant
 from app.config import Settings
 from app.utils import FileUtilsWrapper
-from .event_handler import EventHandler
+from app.event.event_handler import EventHandler
 
 
-class Agent:
+class OpenAIAgent:
     client: AsyncOpenAI = AsyncOpenAI(api_key=Settings.OPENAI_API_KEY)
     file_utils: FileUtilsWrapper = FileUtilsWrapper(client)
 

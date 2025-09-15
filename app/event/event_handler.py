@@ -16,10 +16,12 @@ class EventHandler(AsyncAssistantEventHandler):
         if not self.current_message:
             msg = "Not available message"
             raise ValueError(msg)
+
         await self.current_message.stream_token(delta.value)
 
     async def on_text_done(self, *_: Any) -> None:
         if not self.current_message:
             msg = "Not available message"
             raise ValueError(msg)
+
         await self.current_message.update()

@@ -1,6 +1,6 @@
 # Asistente Batty con OpenAI y Chainlit
 
-Este repositorio contiene un asistente virtual diseñado para ayudar en tareas comunes al sistema de Batuta desarrollado por Metabase Q, aprovechando los servicios de OpenAI y la plataforma LiteralAI. El asistente está configurado para utilizar APIs de ambas plataformas para el procesamiento y generación de respuestas. 
+Este repositorio contiene un asistente virtual diseñado para ayudar en tareas comunes al sistema de Batuta desarrollado por Metabase Q, aprovechando los servicios de OpenAI y la plataforma LiteralAI. El asistente está configurado para utilizar APIs de ambas plataformas para el procesamiento y generación de respuestas.
 
 Las tecnologias usadas son:
 - OpenAI para utilizar el LLM y la Bases de Datos vectorial
@@ -49,6 +49,3 @@ docker run -p 8000:8000 chainlit-app
 
 ### Mejoras
 Integracion a sistemas reales ( APIs ) Esto permitira desbloquear muchas funcionalidades y mejorar la precision de respuesta
-
-
-

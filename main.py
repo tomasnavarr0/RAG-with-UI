@@ -8,7 +8,6 @@ vector_db = OpenAIVectorDB()
 
 @cl.on_chat_start
 async def on_start():
-
     await agent.set_starters()
     await agent.start_chat()
 

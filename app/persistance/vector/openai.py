@@ -3,11 +3,12 @@ import os
 from openai import AsyncOpenAI
 from app.config import Settings
 from app.models import VectorFile
+from .abstract import AbstractVectorDB
 
 
 @dataclass
-class OpenAIVectorDB:
-    openai_client: AsyncOpenAI = field(default=AsyncOpenAI(api_key=Settings.OPENAI_API_KEY))
+class OpenAIVectorDB(AbstractVectorDB):
+    openai_client: AsyncOpenAI = field(default=Settings.async_openai_client)
     pdf_folder: str = field(default=Settings.PDF_FOLDER)
 
     @property
@@ -23,15 +24,10 @@ class OpenAIVectorDB:
             return VectorFile(id=file.id, filename=file.filename)
 
     async def upsert_all(self, files_path: list[str] | None = None) -> list[VectorFile]:
-        files_uploaded = list[VectorFile]()
         files = files_path or await self.get_all
         all_filenames = ["app/data/" + file.filename for file in files]  # type: ignore[union-attr]
-        for file_path in self.pdf_files:
-            if file_path in all_filenames:
-                continue
-            uploaded_file = await self.upsert(file_path)
-            files_uploaded.append(uploaded_file)
-        return files_uploaded
+
+        return [await self.upsert(file_path) for file_path in self.pdf_files if file_path not in all_filenames]
 
     @property
     async def get_all(self) -> list[VectorFile]:

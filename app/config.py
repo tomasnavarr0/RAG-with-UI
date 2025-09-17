@@ -1,4 +1,4 @@
-from openai import OpenAI
+from openai import AsyncOpenAI
 from literalai import LiteralClient
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -15,6 +15,9 @@ class Settings(BaseSettings):
     ASSISTANT_ID: str
     VECTOR_DB_ID: str
 
+    OLLAMA_HOST: str
+    OLLAMA_MODEL: str
+
     PDF_FOLDER: str = "app/data"
 
     @property
@@ -22,9 +25,9 @@ class Settings(BaseSettings):
         return LiteralClient(api_key=self.LITERAL_API_KEY)
 
     @property
-    def openai_client(self) -> OpenAI:
+    def async_openai_client(self) -> AsyncOpenAI:
         self.literal_client.instrument_openai()
-        return OpenAI(api_key=self.OPENAI_API_KEY)
+        return AsyncOpenAI(api_key=self.OPENAI_API_KEY, http_client=None)
 
 
 Settings = Settings()  # type: ignore
